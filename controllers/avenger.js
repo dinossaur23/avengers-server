@@ -1,5 +1,5 @@
 const httpStatus = require('http-status-codes');
-const service = require('../services/aluno');
+const service = require('../services/avenger');
 
 const get = (req, res) => {
   return service.get(req)

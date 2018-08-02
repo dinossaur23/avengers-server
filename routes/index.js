@@ -4,6 +4,6 @@ router.get('/', (req, res) => {
   res.send('Welcome to CRUD');
 });
 
-router.use('/alunos', require('./aluno'));
+router.use('/avengers', require('./avenger'));
 
 module.exports = router;
