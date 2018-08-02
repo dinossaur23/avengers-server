@@ -1,12 +1,12 @@
-const { Aluno } = require('../models/index');
+const { Avenger } = require('../models/index');
 const get = (req) => {
-  return Aluno.findAll()
+  return Avenger.findAll()
     .then(result => result);
 };
 
 const getById = (req) => {
   const options = parserFindOption(req);
-  return Aluno.findOne(option)
+  return Avenger.findOne(option)
   .then((result) => result);
 };
 
@@ -21,7 +21,7 @@ const parserFindOption = (req) => {
 
 const post = (req) => {
   const { body } = req;
-  return Aluno.create(body)
+  return Avenger.create(body)
 };
 
 

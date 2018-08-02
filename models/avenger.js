@@ -21,5 +21,5 @@ const schema = {
   }
 };
 
-const Aluno = connection.define('aluno', schema, { tableName: 'aluno' });
-module.exports = exports = Aluno;
+const Avenger = connection.define('avenger', schema, { tableName: 'avenger' });
+module.exports = exports = Avenger;

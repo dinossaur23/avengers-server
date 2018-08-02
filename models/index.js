@@ -1,5 +1,5 @@
-const Aluno = require('./aluno');
+const Avenger = require('./avenger');
 
 module.exports = exports = {
-  Aluno
+  Avenger
 };

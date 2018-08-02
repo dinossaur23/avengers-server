@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const ctrl  = require('../controllers/aluno');
+const ctrl  = require('../controllers/avenger');
 
 router.get('/', ctrl.get);
 router.get('/:id', ctrl.getById);
