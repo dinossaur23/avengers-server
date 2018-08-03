@@ -1,5 +1,6 @@
 const httpStatus = require('http-status-codes');
 const service = require('../services/users');
+const serviceUserhas = require('../services/user_has_avenger');
 
 
 const authenticate = (req, res) => {
@@ -16,6 +17,11 @@ const authenticate = (req, res) => {
   });
 };
 
+const getUserAvenger = (req, res) => {
+  return serviceUserhas.getById(req)
+    .then((result) => res.send(result));
+}
+
 const newUser = (req, res) => {
   return service.newUser(req).then((result) => {
       res.send(result);
@@ -24,5 +30,6 @@ const newUser = (req, res) => {
 
 module.exports = {
   authenticate,
-  newUser
+  newUser,
+  getUserAvenger,
 }
