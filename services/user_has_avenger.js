@@ -1,4 +1,4 @@
-const { UserHasAvenger } = require('../models/index');
+const { Users, UserHasAvenger, Avenger } = require('../models/index');
 const get = (req) => {
   return UserHasAvenger.findAll()
     .then(result => result);
@@ -6,17 +6,30 @@ const get = (req) => {
 
 const getById = (req) => {
   const options = parserFindOption(req);
-  return UserHasAvenger.findOne(option)
+  return Users.findOne(options)
   .then((result) => result);
 };
 
 const parserFindOption = (req) => {
   const { id } = req.params;
-  return {
+  result = {
     where: {
       id: id
     }
   };
+  result.include = [
+    {
+      model: UserHasAvenger,
+      required: true,
+      include: [
+        {
+          model: Avenger,
+          required: true
+        }
+      ]
+    }
+  ];
+  return result;
 };
 
 const post = (req) => {

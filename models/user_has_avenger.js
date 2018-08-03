@@ -6,15 +6,13 @@ const schema = {
     type: INTEGER,
     field: 'users_id',
     primaryKey: true,
-    allowNull: false,
-    autoIncrement: true
+    allowNull: false
   },
   avengers_id: {
     type: INTEGER,
     field: 'avengers_id',
     primaryKey: true,
-    allowNull: false,
-    autoIncrement: true
+    allowNull: false
   }
 };
 

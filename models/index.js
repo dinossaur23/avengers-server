@@ -1,13 +1,17 @@
 const Avenger = require('./avenger');
-const UsersHasAvenger = require('./user_has_avenger');
-// const User = require('./user');
+const UserHasAvenger = require('./user_has_avenger');
+const Users = require('./users');
 
-UserHasAvenger.hasMany(Avenger, { foreignKey: 'avengers_id'} )
-Avenger.belongsToMany(UserHasAvenger, { foreignKey: 'avengers_id' })
-UserHasAvenger.hasMany(User, { foreignKey: 'users_id'} )
-User.belongsToMany(UserHasAvenger, { foreignKey: 'users_id' })
+UserHasAvenger.hasMany(Avenger, { foreignKey: 'id'} )
+Avenger.belongsTo(UserHasAvenger, { foreignKey: 'id' })
+UserHasAvenger.hasMany(Users, { foreignKey: 'id'} )
+Users.belongsTo(UserHasAvenger, { foreignKey: 'id' })
+
+Users.belongsToMany(Avenger, { through: UserHasAvenger, foreignKey: 'users_id'});
+Avenger.belongsToMany(Users, { through: UserHasAvenger, foreignKey: 'avengers_id'});
 
 module.exports = exports = {
-  Avenger
-  // UserHasAvenger
+  Avenger,
+  UserHasAvenger,
+  Users
 };
