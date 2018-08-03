@@ -12,7 +12,7 @@ const sequelize = new Sequelize('nodeangular', 'nodeangular', 'IBMjul18@', {
   define: { timestamps: false }
 });
 
-sequelize.query("SELECT * FROM avengers")
+sequelize.query("SELECT * FROM users")
   .then(myTableRows => {
     console.log(myTableRows);
   });
