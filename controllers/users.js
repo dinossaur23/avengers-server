@@ -2,17 +2,21 @@ const httpStatus = require('http-status-codes');
 const service = require('../services/users');
 const serviceUserhas = require('../services/user_has_avenger');
 
-
 const authenticate = (req, res) => {
-  return service.authenticate(req)
+  const { body } = req;
+  return service.authenticate(body.email)
   .then((result) => {
-    if(result == "Authenticated"){
+    if(body.password == result.password){
       res.status(httpStatus.OK)
-      res.send("Authenticated");
+      res.send({"status": "Sucess",
+                "id": result.id
+              });
     }
     else {
       res.status(httpStatus.UNAUTHORIZED)
-      res.send("Not Authenticated");
+      res.send({
+        "status": "Failed"
+      });
     }
   });
 };
@@ -31,5 +35,5 @@ const newUser = (req, res) => {
 module.exports = {
   authenticate,
   newUser,
-  getUserAvenger,
+  getUserAvenger
 }

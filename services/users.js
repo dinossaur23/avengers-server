@@ -1,17 +1,9 @@
 const { Users } = require('../models/index');
 
 const authenticate = (req) => {
-  const { body } = req;
-  const options = parserFindOption(body.email);
+  const options = parserFindOption(req);
   return Users.findOne(options)
-  .then((result) => {
-    if(result.password == req.password){
-      return "Authenticated";
-    }
-    else {
-      return "Not Authenticated";
-    }
-  });
+    .then((result) => result);
 };
 
 const parserFindOption = (req) => {
