@@ -3,7 +3,7 @@ const { Users } = require('../models/index');
 const authenticate = (req) => {
   const options = parserFindOption(req);
   return Users.findOne(options)
-  .then((result) => result);
+    .then((result) => result);
 };
 
 const parserFindOption = (req) => {

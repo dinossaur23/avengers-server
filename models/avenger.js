@@ -14,12 +14,12 @@ const schema = {
     field: 'name',
     allowNull: false
   },
-  birthday: {
-    type: DATE,
-    field: 'birthday',
+  id_marvel: {
+    type: STRING,
+    field: 'id_marvel',
     allowNull: false
   }
 };
 
-const Avenger = connection.define('avenger', schema, { tableName: 'avenger' });
+const Avenger = connection.define('avengers', schema, { tableName: 'avengers' });
 module.exports = exports = Avenger;
