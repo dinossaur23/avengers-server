@@ -7,13 +7,13 @@ const authenticate = (req, res) => {
   return service.authenticate(body.email)
   .then((result) => {
     if(body.password == result.password){
-      res.status(httpStatus.OK)
+      res.status(httpStatus.OK);
       res.send({"status": "Sucess",
                 "id": result.id
               });
     }
     else {
-      res.status(httpStatus.UNAUTHORIZED)
+      res.status(httpStatus.UNAUTHORIZED);
       res.send({
         "status": "Failed"
       });
@@ -32,8 +32,38 @@ const newUser = (req, res) => {
   }).catch((error) => res.send(error));
 };
 
+const update = (req, res) => {
+  return service.update(req)
+  .then((result) => {
+    if(result != 0){
+      res.status(httpStatus.OK);
+      res.send();
+    }
+    else {
+      res.status(httpStatus.UNAUTHORIZED);
+      res.send();
+    }
+  });
+};
+
+const del = (req, res) => {
+  return service.del(req)
+  .then((result) => {
+    if(result != 0){
+      res.status(httpStatus.OK);
+      res.send();
+    }
+    else {
+      res.status(httpStatus.NOT_FOUND);
+      res.send();
+    }
+  });
+};
+
 module.exports = {
   authenticate,
   newUser,
-  getUserAvenger
+  getUserAvenger,
+  update,
+  del
 }
