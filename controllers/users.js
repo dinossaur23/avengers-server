@@ -9,7 +9,9 @@ const authenticate = (req, res) => {
     if(body.password == result.password){
       res.status(httpStatus.OK)
       res.send({"status": "Sucess",
-                "id": result.id
+                "id": result.id,
+                "name": result.name,
+                "email": result.email
               });
     }
     else {
