@@ -1,4 +1,5 @@
 const { Avenger } = require('../models/index');
+
 const get = (req) => {
   return Avenger.findAll()
     .then(result => result);
@@ -24,9 +25,19 @@ const post = (req) => {
   return Avenger.create(body)
 };
 
+const del = (req) => {
+  const { id } = req.params;
+  return Avenger.destroy({
+    where: {
+      id: id
+    }
+  })
+  .then((result) => result);
+};
 
 module.exports = {
   get,
   getById,
-  post
+  post,
+  del
 };

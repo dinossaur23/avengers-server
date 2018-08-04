@@ -21,8 +21,23 @@ const post = (req, res) => {
   }).catch((error) => res.send(error));
 };
 
+const del = (req, res) => {
+  return service.del(req)
+  .then((result) => {
+    if(result != 0){
+      res.status(httpStatus.OK);
+      res.send();
+    }
+    else {
+      res.status(httpStatus.NOT_FOUND);
+      res.send();
+    }
+  });
+};
+
 module.exports = {
   get,
   getById,
-  post
+  post,
+  del
 }
